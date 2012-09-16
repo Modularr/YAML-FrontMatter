@@ -3,7 +3,7 @@ YAML Front Matter
 
 An easy to use class for handling YAML frontmatter in PHP.
 
-## What does this class do?
+### What does this class do?
 
 YAML Front Matter is a technique used by many new and upcoming systems that do not use Databases as their backend. Instead they rely on a file based system.
 
@@ -11,7 +11,7 @@ YAML Front Matter is a method used to keep metadata about the file seperated fro
 
 What this simple PHP class allows you to do is **read such files**, and return each of the **metadata** or **content** independantly.
 
-## What files are compatible with this class?
+### What files are compatible with this class?
 
 This class is currently a stict format. The current format is following the original [Jekyll](https://github.com/mojombo/jekyll/wiki/yaml-front-matter) project example. As far as we know the current file format is only compatible with [Statamic](http://statamic.com/ "Statamic is a flexible, flat file CMS").
 
