@@ -1,7 +1,7 @@
 <?php
 # Include Class
 include('frontmatter.php');
-$fetch = new FrontMatter('content/test.md');
+$page = new FrontMatter('content/test.md');
 
-echo '<h1><a href="'.$fetch->uri.'">'.$fetch->title.'</a></h1>
-'.$fetch->content;
+echo '<h1><a href="'.$page->fetch('uri').'">'.$page->fetch('title').'</a></h1>
+'.$page->fetch('content');
