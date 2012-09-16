@@ -5,9 +5,7 @@ An easy to use class for handling YAML frontmatter in PHP.
 
 ### What does this class do?
 
-YAML Front Matter is a technique used to keep metadata about the file seperated from the actual content inside the file, while still only having 1 file.
-
-This simple PHP class allows you to **read such files**, and return each of the **metadata** or **content** independantly.
+YAML Front Matter is a technique used to keep metadata about the file seperated from the actual content inside the file, while still only having 1 file. This simple PHP class allows you to **read such files**, and return each of the **metadata** or **content** independantly.
 
 ### What files are compatible with this class?
 
