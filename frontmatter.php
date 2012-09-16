@@ -10,6 +10,8 @@
  */
 class FrontMatter
 {
+    private $data;
+    
     /**
      * Constructor method, checks a file and then puts the contents into custom strings for usage
      * @param string $file The input file
@@ -21,8 +23,16 @@ class FrontMatter
         
         foreach($fm as $key => $value)
         {
-            $this->$key = $value;
+            $this->data[$key] = $value;
         }
+    }
+    
+    /**
+     * test
+     */
+    public function fetch($key)
+    {
+        return $this->data[$key];
     }
     
     /**
@@ -62,11 +72,8 @@ class FrontMatter
             $key = $var[0];
             $val = $var[1];
             
-            # Explode Tag like variables
-            $value = explode(",",$val);
-            
-            # Store a final array, if a string contains commas, it will return as array instead of string
-            $final[$key] = ($this->contains(",",$val)) ? $value : $val;
+            # Store Content in Final array
+            $final[$key] = $val;
         }
         
         # Store Content in Final array
@@ -74,40 +81,6 @@ class FrontMatter
         
         # Return Final array
         return $final;
-    }
-    
-    /**
-     * Contains method, simply checks to see if something contains another string
-     * @param string|array $needles The needle(s) we are looking for, this can be an array or a string
-     * @param string $haystack The haystack string to look inside of.
-     * @return bool true or false
-     */
-    protected function contains($needles, $haystack)
-    {
-        # If there are multiple needsles (array)
-        if( is_array($needles) )
-        {
-            # For each needle
-            foreach($needles as $needle)
-            {
-                # Look for a needle in the haystack
-                if(strpos($haystack, $needle) !== false)
-                {
-                    # Needle found
-                    return true;
-                }
-            }
-        }
-        # otherwise use the needle as a string
-        else
-        {
-            # Look for a needle in the haystack
-            if(strpos($haystack, $needles) !== false)
-            {
-                # Needle found
-                return true;
-            }
-        }
     }
     
     /**
