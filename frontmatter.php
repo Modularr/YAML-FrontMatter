@@ -4,7 +4,6 @@
  * An easy to use class for handling YAML frontmatter in PHP.
  * 
  * @author David D'hont (blaxus@gmail.com)
- * @link http://www.daviddhont.com
  * @license http://opensource.org/licenses/mit-license.php MIT License
  * @version 1.0.00
  */
