@@ -3,9 +3,11 @@
  * PHP YAML FrontMatter Class
  * An easy to use class for handling YAML frontmatter in PHP.
  * 
- * @author David D'hont (blaxus@gmail.com)
- * @license http://opensource.org/licenses/mit-license.php MIT License
- * @version 1.0.00
+ * @author David D'hont <info@daviddhont.com>
+ * @package YAML-FrontMatter
+ * @license http://unlicense.org UnLicense
+ * @link https://github.com/Blaxus
+ * @link http://daviddhont.com/donate/
  */
 class FrontMatter
 {
