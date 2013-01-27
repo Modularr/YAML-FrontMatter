@@ -1,0 +1,27 @@
+{
+    "name": "Modularr/YAML-FrontMatter",
+    "type": "library",
+    "description": "YAML-FrontMatter is a simple to use PHP only FrontMatter type parser Library.",
+    "keywords": ["php","parser","parsing","frontmatter","metadata"],
+    "homepage": "http://modularr.com",
+    "license": "UNLICENSE",
+    "authors": [
+        {
+            "name": "David D'hont",
+            "email": "admin@daviddhont.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.4"
+    },
+    "autoload": {
+        "psr-0" : {
+            "FrontMatter" : "lib/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.1-RC1"
+        }
+    }
+}
