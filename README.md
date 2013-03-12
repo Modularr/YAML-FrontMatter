@@ -29,4 +29,4 @@ There is no conversion from Markdown so you will have to implement your own, or 
 
 ### How to use this class?
 
-test.php is an example file that shows you how to use this class.
+example/example.php is an example file that shows you how to use this class.
