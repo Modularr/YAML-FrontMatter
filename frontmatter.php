@@ -20,6 +20,7 @@ class FrontMatter
     public function __construct($file)
     {
         $file = $this->Read($file);
+        $this->yaml_separator = "---\n";
         $fm = $this->FrontMatter($file);
         
         foreach($fm as $key => $value)
@@ -43,45 +44,72 @@ class FrontMatter
      */
     function FrontMatter($input)
     {
-        # Explode Seperators
-        $output = explode("---\n",$input);
-        
-        # Make new array
-        foreach($output as $key => $value)
-        {
-            # Ignore empty nodes
-            if(!empty($value))
-            {
-                # Trap last Character in string
-                $lastCharacter = substr($value, -1);
-                
-                # Return string without last character if it is a newline, Otherwise use normal value
-                $tmp[$key] = ($lastCharacter == "\n") ? substr($value, 0, -1) : $value;
-            }
+        if (!$this->startsWith($input, $this->yaml_separator)) {
+          # No front matter
+          # Store Content in Final array
+          $final['content'] = $input;
+          # Return Final array
+          return $final;
         }
+
+        # Explode Seperators. At most, make three pieces out of the input file
+        $document = explode($this->yaml_separator,$input, 3);
+
         
-        # Explode newlines only for the variables
-        $vars = explode("\n",$tmp[1]);
-        
-        # For each variable
-        foreach($vars as $variable)
+        switch( sizeof($document) ) {
+          case 0:
+          case 1:
+            // Empty document
+            $front_matter = "";
+            $content = "";
+            break;
+          case 2:
+            // Only front matter given
+            $front_matter = $document[1];
+            $content = "";
+            break;
+          default:
+            // Normal document
+            $front_matter = $document[1];
+            $content = $document[2];
+        }
+
+        # Split lines in front matter to get variables
+        $front_matter = explode("\n",$front_matter);
+        foreach($front_matter as $variable)
         {
             # Explode so we can see both key and value
             $var = explode(": ",$variable);
             
-            # Store Key and Value
-            $key = $var[0];
-            $val = $var[1];
-            
-            # Store Content in Final array
-            $final[$key] = $val;
+            # Ignore empty lines
+            if (count($var) > 1) {
+
+              # Store Key and Value
+              $key = $var[0];
+              $val = $var[1];
+              
+              # Store Content in Final array
+              $final[$key] = $val;
+            }
         }
         
         # Store Content in Final array
-        $final['content'] = $tmp[2];
+        $final['content'] = $content;
         
         # Return Final array
         return $final;
+    }
+
+    /**
+     * A convenience wrapper around strpos to check the start of a string
+     * From http://stackoverflow.com/a/860509/270334
+     * @return string starts with $needle
+     */
+    private function startsWith($haystack,$needle,$case=true)
+    {
+       if($case)
+           return strpos($haystack, $needle, 0) === 0;
+       return stripos($haystack, $needle, 0) === 0;
     }
     
     /**
