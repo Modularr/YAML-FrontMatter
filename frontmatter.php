@@ -30,12 +30,28 @@ class FrontMatter
     }
     
     /**
-     * test
+     * fetch method returns the value of a given key
+     * @return string $value The value for a given key
      */
     public function fetch($key)
     {
         return $this->data[$key];
     }
+    
+    /**
+     * fetchKeys method returns an array of all meta data without the content
+     * @return [array] collection of all meta keys provided to FrontMatter
+     */
+     public function fetchKeys() {
+
+        // Cache the keys so we don't edit the native object data
+        $keys = $this->data;
+
+        // Remove $data[content] from the keys so we only have the meta data
+        array_pop($keys);
+
+        return $keys;
+     }
     
     /**
      * FrontMatter method, rturns all the variables from a YAML Frontmatter input
@@ -103,7 +119,7 @@ class FrontMatter
     /**
      * A convenience wrapper around strpos to check the start of a string
      * From http://stackoverflow.com/a/860509/270334
-     * @return string starts with $needle
+     * @return boolean $startswithneedle string starts with $needle
      */
     private function startsWith($haystack,$needle,$case=true)
     {
