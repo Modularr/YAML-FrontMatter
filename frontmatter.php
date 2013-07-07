@@ -137,7 +137,7 @@ class FrontMatter
         # Open File
         $fh = fopen($file, 'r');
         
-        $fileSize = filesize($file)
+        $fileSize = filesize($file);
 
         if(!empty($fileSize))
         {        
