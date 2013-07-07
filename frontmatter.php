@@ -137,11 +137,18 @@ class FrontMatter
         # Open File
         $fh = fopen($file, 'r');
         
-        # Read Data
-        $data = fread($fh, filesize($file));
-        
-        # Fix Data Stream to be the exact same format as PHP's strings
-        $data = str_replace(array("\r\n", "\r", "\n"), "\n", $data); 
+        $fileSize = filesize($file)
+
+        if(!empty($fileSize))
+        {        
+            # Read Data
+            $data = fread($fh, $fileSize);
+            
+            # Fix Data Stream to be the exact same format as PHP's strings
+            $data = str_replace(array("\r\n", "\r", "\n"), "\n", $data); 
+        } else {
+            $data = '';
+        }
         
         # Close File
         fclose($fh);
