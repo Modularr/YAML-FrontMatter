@@ -95,7 +95,7 @@ class FrontMatter
         foreach($front_matter as $variable)
         {
             # Explode so we can see both key and value
-            $var = explode(": ",$variable);
+            $var = explode(": ",$variable,2);
             
             # Ignore empty lines
             if (count($var) > 1) {
