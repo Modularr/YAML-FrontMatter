@@ -39,15 +39,25 @@ class FrontMatter
     }
     
     /**
+     * fetch method Checks to see if a key exists
+     * @return bool
+     */
+    public function exists($key)
+    {
+        #return (isset($this->data[$key])) ? true : false; # Isset Version
+        return array_key_exists($key, $this->data); # array_key_exists version
+    }
+    
+    /**
      * fetchKeys method returns an array of all meta data without the content
      * @return [array] collection of all meta keys provided to FrontMatter
      */
-     public function fetchKeys() {
-
-        // Cache the keys so we don't edit the native object data
+     public function fetchKeys()
+     {
+        # Cache the keys so we don't edit the native object data
         $keys = $this->data;
 
-        // Remove $data[content] from the keys so we only have the meta data
+        # Remove $data[content] from the keys so we only have the meta data
         array_pop($keys);
 
         return $keys;
@@ -60,7 +70,8 @@ class FrontMatter
      */
     function FrontMatter($input)
     {
-        if (!$this->startsWith($input, $this->yaml_separator)) {
+        if (!$this->startsWith($input, $this->yaml_separator))
+        {
           # No front matter
           # Store Content in Final array
           $final['content'] = $input;
@@ -70,9 +81,9 @@ class FrontMatter
 
         # Explode Seperators. At most, make three pieces out of the input file
         $document = explode($this->yaml_separator,$input, 3);
-
         
-        switch( sizeof($document) ) {
+        switch( sizeof($document) )
+        {
           case 0:
           case 1:
             // Empty document
@@ -80,12 +91,12 @@ class FrontMatter
             $content = "";
             break;
           case 2:
-            // Only front matter given
+            # Only front matter given
             $front_matter = $document[1];
             $content = "";
             break;
           default:
-            // Normal document
+            # Normal document
             $front_matter = $document[1];
             $content = $document[2];
         }
@@ -146,7 +157,9 @@ class FrontMatter
             
             # Fix Data Stream to be the exact same format as PHP's strings
             $data = str_replace(array("\r\n", "\r", "\n"), "\n", $data); 
-        } else {
+        }
+        else
+        {
             $data = '';
         }
         
