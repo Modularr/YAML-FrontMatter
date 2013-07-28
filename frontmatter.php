@@ -39,10 +39,10 @@ class FrontMatter
     }
     
     /**
-     * fetch method Checks to see if a key exists
+     * keyExists method Checks to see if a key exists
      * @return bool
      */
-    public function exists($key)
+    public function keyExists($key)
     {
         #return (isset($this->data[$key])) ? true : false; # Isset Version
         return array_key_exists($key, $this->data); # array_key_exists version
