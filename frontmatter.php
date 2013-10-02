@@ -7,7 +7,6 @@
  * @package YAML-FrontMatter
  * @license http://unlicense.org UnLicense
  * @link https://github.com/Blaxus
- * @link http://daviddhont.com/donate/
  */
 class FrontMatter
 {
