@@ -10,6 +10,10 @@
  */
 class FrontMatter
 {
+    /**
+     * All the parameters.
+     * @param array $data metadata & content
+     */
     private $data;
     
     /**
