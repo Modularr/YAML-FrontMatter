@@ -1,5 +1,6 @@
 YAML Front Matter
 ================
+[![Latest Stable Version](https://poser.pugx.org/modularr/yaml-front-matter/v/stable.svg)](https://packagist.org/packages/modularr/yaml-front-matter) [![Total Downloads](https://poser.pugx.org/modularr/yaml-front-matter/downloads.svg)](https://packagist.org/packages/modularr/yaml-front-matter) [![Latest Unstable Version](https://poser.pugx.org/modularr/yaml-front-matter/v/unstable.svg)](https://packagist.org/packages/modularr/yaml-front-matter) [![License](https://poser.pugx.org/modularr/yaml-front-matter/license.svg)](https://packagist.org/packages/modularr/yaml-front-matter)
 
 An easy to use class for handling YAML frontmatter in PHP.
 
