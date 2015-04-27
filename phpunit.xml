@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit colors="true"
+         bootstrap="./vendor/autoload.php"
+         stopOnFailure="false"
+         syntaxCheck="true">
+    
+    <testsuites>
+        <testsuite name="Frontmatter Test Suite">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./</directory>
+            <exclude>
+                <directory>./tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+</phpunit>
