@@ -2,7 +2,7 @@
 /**
  * PHP YAML FrontMatter Class
  * An easy to use class for handling YAML frontmatter in PHP.
- * 
+ *
  * @author Blaxus
  * @package YAML-FrontMatter
  * @license http://unlicense.org UnLicense
@@ -15,23 +15,23 @@ class FrontMatter
      * @param array $data metadata & content
      */
     private $data;
-    
+
     /**
      * Constructor method, checks a file and then puts the contents into custom strings for usage
      * @param string $file The input file
      */
     public function __construct($file)
     {
-        $file = $this->Read($file);
+        $file = (file_exists($file)) ? $this->Read($file) : str_replace(array("\r\n", "\r", "\n"), "\n", $file);
         $this->yaml_separator = "---\n";
         $fm = $this->FrontMatter($file);
-        
+
         foreach($fm as $key => $value)
         {
             $this->data[$key] = $value;
         }
     }
-    
+
     /**
      * fetch method returns the value of a given key
      * @return string $value The value for a given key
@@ -40,7 +40,7 @@ class FrontMatter
     {
         return $this->data[$key];
     }
-    
+
     /**
      * keyExists method Checks to see if a key exists
      * @return bool
@@ -50,13 +50,13 @@ class FrontMatter
         #return (isset($this->data[$key])) ? true : false; # Isset Version
         return array_key_exists($key, $this->data); # array_key_exists version
     }
-    
+
     /**
      * fetchKeys method returns an array of all meta data without the content
      * @return [array] collection of all meta keys provided to FrontMatter
      */
-     public function fetchKeys()
-     {
+    public function fetchKeys()
+    {
         # Cache the keys so we don't edit the native object data
         $keys = $this->data;
 
@@ -64,8 +64,8 @@ class FrontMatter
         array_pop($keys);
 
         return $keys;
-     }
-    
+    }
+
     /**
      * FrontMatter method, rturns all the variables from a YAML Frontmatter input
      * @param string $input The input string
@@ -75,33 +75,33 @@ class FrontMatter
     {
         if (!$this->startsWith($input, $this->yaml_separator))
         {
-          # No front matter
-          # Store Content in Final array
-          $final['content'] = $input;
-          # Return Final array
-          return $final;
+            # No front matter
+            # Store Content in Final array
+            $final['content'] = $input;
+            # Return Final array
+            return $final;
         }
 
         # Explode Seperators. At most, make three pieces out of the input file
         $document = explode($this->yaml_separator,$input, 3);
-        
+
         switch( sizeof($document) )
         {
-          case 0:
-          case 1:
-            // Empty document
-            $front_matter = "";
-            $content = "";
-            break;
-          case 2:
-            # Only front matter given
-            $front_matter = $document[1];
-            $content = "";
-            break;
-          default:
-            # Normal document
-            $front_matter = $document[1];
-            $content = $document[2];
+            case 0:
+            case 1:
+                // Empty document
+                $front_matter = "";
+                $content = "";
+                break;
+            case 2:
+                # Only front matter given
+                $front_matter = $document[1];
+                $content = "";
+                break;
+            default:
+                # Normal document
+                $front_matter = $document[1];
+                $content = $document[2];
         }
 
         # Split lines in front matter to get variables
@@ -110,22 +110,22 @@ class FrontMatter
         {
             # Explode so we can see both key and value
             $var = explode(": ",$variable,2);
-            
+
             # Ignore empty lines
             if (count($var) > 1) {
 
-              # Store Key and Value
-              $key = $var[0];
-              $val = $var[1];
-              
-              # Store Content in Final array
-              $final[$key] = $val;
+                # Store Key and Value
+                $key = $var[0];
+                $val = $var[1];
+
+                # Store Content in Final array
+                $final[$key] = $val;
             }
         }
-        
+
         # Store Content in Final array
         $final['content'] = $content;
-        
+
         # Return Final array
         return $final;
     }
@@ -137,11 +137,11 @@ class FrontMatter
      */
     private function startsWith($haystack,$needle,$case=true)
     {
-       if($case)
-           return strpos($haystack, $needle, 0) === 0;
-       return stripos($haystack, $needle, 0) === 0;
+        if($case)
+            return strpos($haystack, $needle, 0) === 0;
+        return stripos($haystack, $needle, 0) === 0;
     }
-    
+
     /**
      * Read Method, Read file and returns it's contents
      * @return string $data returned data
@@ -150,25 +150,25 @@ class FrontMatter
     {
         # Open File
         $fh = fopen($file, 'r');
-        
+
         $fileSize = filesize($file);
 
         if(!empty($fileSize))
-        {        
+        {
             # Read Data
             $data = fread($fh, $fileSize);
-            
+
             # Fix Data Stream to be the exact same format as PHP's strings
-            $data = str_replace(array("\r\n", "\r", "\n"), "\n", $data); 
+            $data = str_replace(array("\r\n", "\r", "\n"), "\n", $data);
         }
         else
         {
             $data = '';
         }
-        
+
         # Close File
         fclose($fh);
-        
+
         # Return Data
         return $data;
     }
