@@ -1,6 +1,9 @@
 YAML Front Matter
 ================
-[![Latest Stable Version](https://poser.pugx.org/modularr/yaml-front-matter/v/stable.svg)](https://packagist.org/packages/modularr/yaml-front-matter) [![Total Downloads](https://poser.pugx.org/modularr/yaml-front-matter/downloads.svg)](https://packagist.org/packages/modularr/yaml-front-matter) [![Latest Unstable Version](https://poser.pugx.org/modularr/yaml-front-matter/v/unstable.svg)](https://packagist.org/packages/modularr/yaml-front-matter) [![License](https://poser.pugx.org/modularr/yaml-front-matter/license.svg)](https://packagist.org/packages/modularr/yaml-front-matter)
+[![Latest Version](http://img.shields.io/packagist/v/modularr/yaml-front-matter.svg?style=flat)](https://packagist.org/packages/modularr/yaml-front-matter)
+[![Software License](https://poser.pugx.org/modularr/yaml-front-matter/license.svg)](LICENSE.md)
+[![Build Status](https://img.shields.io/travis/Modularr/YAML-FrontMatter/master.svg?style=flat)](https://travis-ci.org/Modularr/YAML-FrontMatter)
+[![Total Downloads](https://img.shields.io/packagist/dt/modularr/yaml-front-matter.svg?style=flat)](https://packagist.org/packages/modularr/yaml-front-matter)
 
 An easy to use class for handling YAML frontmatter in PHP.
 
