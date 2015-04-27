@@ -10,5 +10,8 @@
             "name": "David D'hont",
             "email": "admin@daviddhont.com"
         }
-    ]
+    ],
+    "require-dev":{
+        "phpunit/phpunit": "~4.0"
+    }
 }
