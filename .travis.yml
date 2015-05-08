@@ -11,8 +11,9 @@ php:
 # Commands to be run before your environment runs.
 before_script:
   - composer self-update
-  - composer install --prefer-source --no-interaction --dev
-  - pecl install yaml
+  - composer install --no-progress --prefer-source --no-interaction --dev
+  - printf "\n" | pecl install yaml
+  - echo "extension=yaml.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 # Commands you want to run that will verify your build.
 script: vendor/bin/phpunit --configuration phpunit.xml --coverage-text
