@@ -3,6 +3,8 @@ include 'frontmatter.php';
 class FrontMatterTest extends PHPUnit_Framework_TestCase
 {
     protected $sampleContent = 'This is the content of the file.';
+    protected $sampleTitle   = 'test';
+    protected $sampleUri   = '/test';
     protected $sampleFile = <<<EOT
 ---
 title: test
@@ -15,7 +17,9 @@ EOT;
     {
         $page = new FrontMatter($this->sampleFile);
         
-        # Content is the only concrete variable available, it contains mostly the HTML/markdown
+        # Test predefined variables to see if most custom yaml / content variables work
         $this->assertEquals($this->sampleContent, $page->fetch('content'));
+        $this->assertEquals($this->sampleTitle, $page->fetch('title'));
+        $this->assertEquals($this->sampleUri, $page->fetch('uri'));
     }
 }
