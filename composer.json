@@ -11,8 +11,8 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "modularr\\yaml-front-matter\\": "src/"
+        "classmap": {
+            "src/"
         }
     },
     "require-dev":{
