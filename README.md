@@ -45,10 +45,12 @@ via Composer:
 }
 ```
 Then run:
+
 	composer update
 	
 Or install like so:
-	composer update
+
+	composer require modularr/yaml-front-matter
 
 make sure you have:
 ```php
