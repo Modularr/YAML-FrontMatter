@@ -13,7 +13,7 @@ YAML Front Matter is a technique used to keep metadata about the file seperated 
 
 ### What files are compatible with this class?
 
-Any Jekyll file with Front Matter can be parsed my this class.
+Any Jekyll file with Front Matter can be parsed by this class.
 
 
 ### The format:
@@ -29,9 +29,45 @@ The basic format is as follows:
 	<h1>Text Here</h1>
 	<p>content</p>
 
-There is no conversion from Markdown so you will have to implement your own, or if you want you can simply use HTML and even PHP directly.
+There is no conversion from Markdown so you will have to implement your own.
 
-### Installation / How to use
+Requirements:
+- **yaml** PECL extension for PHP
+
+## Installation
+
+via Composer:
+```json
+{
+    "require": {
+        "modularr/yaml-front-matter": "1.*"
+    }
+}
+```
+Then run:
+	composer update
+	
+Or install like so:
+	composer update
+
+make sure you have:
+```php
+require 'vendor/autoload.php';
+```
+
+Manual:
+
+1. Download [Release](https://github.com/Modularr/YAML-FrontMatter/releases) Or copy file manually
+2. Include **frontmatter.php** (found under **src/**)
+3. Check out the example
+
+### How to use
+
+```php
+$page = new FrontMatter('content/example.md');
+echo '<h1><a href="'.$page->fetch('uri').'">'.$page->fetch('title').'</a></h1>
+'.$page->fetch('content');
+```
 
 1. Make sure you have the **yaml** PECL extension for PHP installed.
-2. Include the "frontmatter.php" file in your PHP, then check out example/example.php for an example of how to use.
+2. Include the "frontmatter.php" file in your PHP (or use composer installation), then check out example/example.php for an example of how to use.
