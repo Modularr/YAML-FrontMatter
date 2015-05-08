@@ -9,16 +9,16 @@ An easy to use class for handling YAML frontmatter in PHP.
 
 ### What does this class do?
 
-YAML Front Matter is a technique used to keep metadata about the file seperated from the actual content inside the file, while still only having 1 file. This simple PHP class allows you to **read such files**, and return each of the **metadata** or **content** independantly.
+YAML Front Matter is a technique used to keep metadata about the file seperated from the actual content inside the file, while still only having one file. This simple PHP class allows you to **read such files**, and return each of the **metadata** or **content** independantly.
 
 ### What files are compatible with this class?
 
-This class is currently a stict format. The current format is following the original [Jekyll](https://github.com/mojombo/jekyll/wiki/yaml-front-matter) project example. As far as we know the current file format is only compatible with [Statamic](http://statamic.com/ "Statamic is a flexible, flat file CMS").
+Any Jekyll file with Front Matter can be parsed my this class.
 
 
 ### The format:
 
-The current strict format is as follows:
+The basic format is as follows:
 
 	---
 	foo: bar
@@ -31,6 +31,7 @@ The current strict format is as follows:
 
 There is no conversion from Markdown so you will have to implement your own, or if you want you can simply use HTML and even PHP directly.
 
-### How to use this class?
+### Installation / How to use
 
-example/example.php is an example file that shows you how to use this class.
+1. Make sure you have the **yaml** PECL extension for PHP installed.
+2. Include the "frontmatter.php" file in your PHP, then check out example/example.php for an example of how to use.
