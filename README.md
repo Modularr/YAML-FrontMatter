@@ -65,11 +65,22 @@ Manual:
 
 ### How to use
 
+The basic format is as follows:
+
+	---
+	foo: bar
+	title: Test
+	expl: Make sure there is only 1 space between each of the variables
+	info: you can have as many custom fields as you like
+	---
+	<h1>Text Here</h1>
+	<p>content</p>
+
+There is no conversion from Markdown so you will have to implement your own.
+
+Example Code:
 ```php
 $page = new FrontMatter('content/example.md');
 echo '<h1><a href="'.$page->fetch('uri').'">'.$page->fetch('title').'</a></h1>
 '.$page->fetch('content');
 ```
-
-1. Make sure you have the **yaml** PECL extension for PHP installed.
-2. Include the "frontmatter.php" file in your PHP (or use composer installation), then check out example/example.php for an example of how to use.
