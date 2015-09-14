@@ -103,9 +103,32 @@ class FrontMatter
                 $front_matter = $document[1];
                 $content = $document[2];
         }
-
+        
         # Parse YAML
-        $final = yaml_parse($front_matter);
+        if(function_exists('yaml_parse'))
+        {
+            $final = yaml_parse($front_matter);
+        }
+        else
+        {
+            # Split lines in front matter to get variables
+            $front_matter = explode("\n",$front_matter);
+            foreach($front_matter as $variable)
+            {
+                # Explode so we can see both key and value
+                $var = explode(": ",$variable,2);
+                
+                # Ignore empty lines
+                if (count($var) > 1) {
+                    # Store Key and Value
+                    $key = $var[0];
+                    $val = $var[1];
+                    
+                    # Store Content in Final array
+                    $final[$key] = $val;
+                }
+            }
+        }
 
         # Store Content in Final array
         $final['content'] = $content;
