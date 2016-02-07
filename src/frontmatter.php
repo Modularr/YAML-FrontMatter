@@ -4,9 +4,7 @@
  * An easy to use class for handling YAML frontmatter in PHP.
  *
  * @author Blaxus
- * @package YAML-FrontMatter
- * @license http://unlicense.org UnLicense
- * @link https://github.com/Blaxus
+ * @package Modularr/YAML-FrontMatter
  */
 class FrontMatter
 {
@@ -103,7 +101,7 @@ class FrontMatter
                 $front_matter = $document[1];
                 $content = $document[2];
         }
-        
+
         # Parse YAML
         if(function_exists('yaml_parse'))
         {
@@ -117,13 +115,13 @@ class FrontMatter
             {
                 # Explode so we can see both key and value
                 $var = explode(": ",$variable,2);
-                
+
                 # Ignore empty lines
                 if (count($var) > 1) {
                     # Store Key and Value
                     $key = $var[0];
                     $val = $var[1];
-                    
+
                     # Store Content in Final array
                     $final[$key] = $val;
                 }
