@@ -3,7 +3,7 @@
     "type": "library",
     "description": "YAML-FrontMatter is a simple to use PHP only FrontMatter type parser Library.",
     "keywords": ["php","parser","parsing","frontmatter","metadata"],
-    "license": "UNLICENSE",
+    "license": "proprietary",
     "authors": [
         {
             "name": "David D'hont",
