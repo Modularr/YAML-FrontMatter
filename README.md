@@ -1,7 +1,7 @@
 YAML Front Matter
 ================
 [![Latest Version](http://img.shields.io/packagist/v/modularr/yaml-front-matter.svg?style=flat)](https://packagist.org/packages/modularr/yaml-front-matter)
-[![Software License](https://poser.pugx.org/modularr/yaml-front-matter/license.svg)](LICENSE.md)
+[![Software License](https://poser.pugx.org/modularr/yaml-front-matter/license)](LICENSE)
 [![Build Status](https://img.shields.io/travis/Modularr/YAML-FrontMatter/master.svg?style=flat)](https://travis-ci.org/Modularr/YAML-FrontMatter)
 [![Total Downloads](https://img.shields.io/packagist/dt/modularr/yaml-front-matter.svg?style=flat)](https://packagist.org/packages/modularr/yaml-front-matter)
 
@@ -47,7 +47,7 @@ via Composer:
 Then run:
 
 	composer update
-	
+
 Or install like so:
 
 	composer require modularr/yaml-front-matter
