@@ -9,31 +9,57 @@ An easy to use class for handling YAML frontmatter in PHP.
 
 ### What does this class do?
 
-YAML Front Matter is a technique used to keep metadata about the file seperated from the actual content inside the file, while still only having one file. This simple PHP class allows you to **read such files**, and return each of the **metadata** or **content** independantly.
+This class is a PHP implementation of [Jekyll](https://jekyllrb.com/docs/frontmatter/) **Front Matter**.
 
-### What files are compatible with this class?
+> Any file that contains a **YAML front matter block will be processed as a special file**. The front matter must be the first thing in the file and must take the form of **valid YAML set** _**between triple-dashed lines**_. Here is a basic example:
 
-Any Jekyll file with Front Matter can be parsed by this class.
+```yaml
+---
+layout: post
+title: Blogging Like a Hacker
+---
+```
 
+Between these triple-dashed lines, you can set variables using YAML. You can access them via the `fetch` function. Conversion to Markdown is optional.
 
-### The format:
+### How to use
 
-The basic format is as follows:
+```php
+$page = new FrontMatter('content/example.md');
+echo '<h1><a href="'.$page->fetch('uri').'">'.$page->fetch('title').'</a></h1>
+'.$page->fetch('content');
 
-	---
-	foo: bar
-	title: Test
-	expl: Make sure there is only 1 space between each of the variables
-	info: you can have as many custom fields as you like
-	---
-	<h1>Text Here</h1>
-	<p>content</p>
+foreach($page->fetch('list') as $key => $value) {
+	echo '<li>'.$key.' => '.$value.'</li>';
+}
+$array = $page->fetch('list');
+echo $array['foo'];
+```
 
-There is no conversion from Markdown so you will have to implement your own.
+```yaml
+---
+foo: bar
+title: Test
+info: you can have as many custom fields as you like
+date: 2005-09-16 17:20:42+00:00
+layout: post
+comments: true
+slug: testing
+list: { foo: bar, bar: baz }
+list2:
+- foo
+- bar
+list3:
+    foo: bar
+    bar: baz
+---
+<h1>Text Here</h1>
+<p>content</p>
+```
 
 ## Installation
 
-via Composer:
+Define in Composer.json:
 ```json
 {
     "require": {
@@ -41,43 +67,12 @@ via Composer:
     }
 }
 ```
-Then run:
 
-	composer update
-
-Or install like so:
+Install in via Composer:
 
 	composer require modularr/yaml-front-matter
 
-make sure you have:
+Make sure you have:
 ```php
 require 'vendor/autoload.php';
-```
-
-Manual:
-
-1. Download [Release](https://github.com/Modularr/YAML-FrontMatter/releases) Or copy file manually
-2. Include **frontmatter.php** (found under **src/**)
-3. Check out the example
-
-### How to use
-
-The basic format is as follows:
-
-	---
-	foo: bar
-	title: Test
-	expl: Make sure there is only 1 space between each of the variables
-	info: you can have as many custom fields as you like
-	---
-	<h1>Text Here</h1>
-	<p>content</p>
-
-There is no conversion from Markdown so you will have to implement your own.
-
-Example Code:
-```php
-$page = new FrontMatter('content/example.md');
-echo '<h1><a href="'.$page->fetch('uri').'">'.$page->fetch('title').'</a></h1>
-'.$page->fetch('content');
 ```
