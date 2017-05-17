@@ -59,15 +59,6 @@ list3:
 
 ## Installation
 
-Define in Composer.json:
-```json
-{
-    "require": {
-        "modularr/yaml-front-matter": "1.*"
-    }
-}
-```
-
 Install in via Composer:
 
 	composer require modularr/yaml-front-matter
