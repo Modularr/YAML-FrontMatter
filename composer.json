@@ -4,12 +4,6 @@
     "description": "YAML-FrontMatter is a simple to use PHP only FrontMatter type parser Library.",
     "keywords": ["php","parser","parsing","frontmatter","metadata"],
     "license": "MIT",
-    "authors": [
-        {
-            "name": "David D'hont",
-            "email": "blaxus@gmail.com"
-        }
-    ],
     "autoload": {
         "classmap": ["src/", "src/frontmatter.php"]
     },
