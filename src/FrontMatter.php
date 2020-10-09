@@ -52,7 +52,7 @@ class FrontMatter
      */
     public function keyExists($key)
     {
-        return (isset($this->data[$key])) ? true : false;
+        return (isset($this->data[$key]));
     }
 
     /**
@@ -66,7 +66,7 @@ class FrontMatter
         $keys = $this->data;
 
         // Remove $data[content] from the keys so we only have the meta data
-        array_pop($keys);
+        unset($keys['content']);
 
         return $keys;
     }
@@ -80,7 +80,7 @@ class FrontMatter
     public function FrontMatter($input)
     {
         // No front matter, return the content directly.
-        if (!$this->startsWith($input, $this->yaml_separator)) {
+        if (!strpos($input, $this->yaml_separator, 0) === 0) {
             return ['content' => $input];
         }
 
@@ -117,20 +117,6 @@ class FrontMatter
 
         // Return Final array
         return $final;
-    }
-
-    /**
-     * A convenience wrapper around strpos to check the start of a string
-     * From http://stackoverflow.com/a/860509/270334
-     *
-     * @return boolean $startswithneedle string starts with $needle
-     */
-    private function startsWith($haystack, $needle, $case = true)
-    {
-        if ($case) {
-            return strpos($haystack, $needle, 0) === 0;
-        }
-        return stripos($haystack, $needle, 0) === 0;
     }
 
     /**
