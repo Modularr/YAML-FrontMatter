@@ -25,12 +25,13 @@ Between these triple-dashed lines, you can set variables using YAML. You can acc
 ### How to use
 
 ```php
-$page = new FrontMatter('content/example.md');
+$page = new \Modularr\YAMLFrontmatter\FrontMatter('content/example.md');
+
 echo '<h1><a href="'.$page->fetch('uri').'">'.$page->fetch('title').'</a></h1>
 '.$page->fetch('content');
 
 foreach($page->fetch('list') as $key => $value) {
-	echo '<li>'.$key.' => '.$value.'</li>';
+    echo '<li>'.$key.' => '.$value.'</li>';
 }
 $array = $page->fetch('list');
 echo $array['foo'];
@@ -61,9 +62,12 @@ list3:
 
 Install in via Composer:
 
-	composer require modularr/yaml-front-matter
+```
+composer require modularr/yaml-front-matter
+```
 
-Make sure you have:
+If you are using the package in a VanillaJS project make sure you have:
+
 ```php
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 ```

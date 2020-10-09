@@ -1,16 +1,24 @@
 {
     "name": "modularr/yaml-front-matter",
     "type": "library",
-    "description": "YAML-FrontMatter is a simple to use PHP only FrontMatter type parser Library.",
+    "description": "YAML-FrontMatter is a simple to use PHP-only FrontMatter type parser Library.",
     "keywords": ["php","parser","parsing","frontmatter","metadata"],
     "license": "MIT",
-    "autoload": {
-        "classmap": ["src/", "src/frontmatter.php"]
-    },
     "require":{
-        "symfony/yaml": "~2.1|^3.0"
+        "php": ">7.2",
+        "symfony/yaml": "^5.0"
     },
     "require-dev":{
-        "phpunit/phpunit": "~4.0"
+        "phpunit/phpunit": "~8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modularr\\YAMLFrontmatter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modularr\\YAMLFrontmatter\\Tests\\": "tests/"
+        }
     }
 }

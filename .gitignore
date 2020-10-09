@@ -1,2 +1,6 @@
 .DS_Store
 ._
+composer.lock
+vendor
+.phpunit.result.cache
+.php_cs.cache
