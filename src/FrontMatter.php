@@ -30,7 +30,7 @@ class FrontMatter
         $this->yaml_separator = "---\n";
         $fm = $this->FrontMatter($file);
 
-        foreach($fm as $key => $value) {
+        foreach ($fm as $key => $value) {
             $this->data[$key] = $value;
         }
     }
@@ -77,20 +77,17 @@ class FrontMatter
      * @param string $input The input string
      * @return array $final returns all variables in an array
      */
-    function FrontMatter($input)
+    public function FrontMatter($input)
     {
+        // No front matter, return the content directly.
         if (!$this->startsWith($input, $this->yaml_separator)) {
-            // No front matter
-            // Store Content in Final array
-            $final['content'] = $input;
-            // Return Final array
-            return $final;
+            return ['content' => $input];
         }
 
         // Explode Seperators. At most, make three pieces out of the input file
-        $document = explode($this->yaml_separator,$input, 3);
+        $document = explode($this->yaml_separator, $input, 3);
 
-        switch( sizeof($document) ) {
+        switch (sizeof($document)) {
             case 0:
             case 1:
                 // Empty document
@@ -128,10 +125,11 @@ class FrontMatter
      *
      * @return boolean $startswithneedle string starts with $needle
      */
-    private function startsWith($haystack,$needle,$case=true)
+    private function startsWith($haystack, $needle, $case = true)
     {
-        if($case)
+        if ($case) {
             return strpos($haystack, $needle, 0) === 0;
+        }
         return stripos($haystack, $needle, 0) === 0;
     }
 
@@ -146,7 +144,7 @@ class FrontMatter
         $fh = fopen($file, 'r');
         $fileSize = filesize($file);
 
-        if(!empty($fileSize)) {
+        if (!empty($fileSize)) {
             // Read Data
             $data = fread($fh, $fileSize);
 
